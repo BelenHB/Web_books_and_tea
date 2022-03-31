@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock title %}
+
+{% block content %}
+
+<section class="page-section clearfix">
+  <div class="container">
+    <div class="intro">
+      <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <h2 class="section-heading mb-4">
+          <span class="section-heading-upper">Esperamos que disfruten</span>
+          {% comment %} {% if request.user.is_authenticated %}
+          <span class="section-heading-lower">Bienvenido {{user.username}}</span> {% endcomment %}
+          <p>
+            {% comment %} <img src="{{url}}" alt="" width="30px" height="40px"> {% endcomment %}
+          </p>
+          {% comment %} {% else %} {% endcomment %}
+          <span class="section-heading-lower">Bienvenidos</span>
+          {% comment %} {% endif %} {% endcomment %}
+        </h2>
+        <p class="mb-3">Este es un espacio de encuentro para quienes disfrutamos
+           de un buen libro y algo rico para comer. ¡Súmate!</p>
+        <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="">Regístrate!</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
+

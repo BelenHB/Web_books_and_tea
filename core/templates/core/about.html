@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Acerca de{% endblock title %}
+
+{% block content %}
+<section class="page-section about-heading">
+  <div class="container">
+    <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" 
+    src="{% static 'core/assets/img/about.jpg' %}" alt="..." />
+    <div class="about-heading-content">
+      <div class="row">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded rounded p-5">
+            <p class="mb-3">
+              Soy Belén y amo leer y comer rico. Y también me gusta Python... <br>
+              Empecé en el mundo de la programación un poco por curiosidad con el 
+              objetivo de incentivar a mi hija en este ámbito y al final, encontré 
+              fascinantes aplicaciones. Proyecto seguir formándome en esta área 
+              y quizás también en análisis de datos, y ojalá pueda trabajar de 
+              esto en un momento no muy lejano. <br>
+              Esta web forma parte del trabajo final en Coderhouse, del curso de 
+              Python y su aplicación al Desarrollo Web con el framework Django.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        
+{% endblock content %}
