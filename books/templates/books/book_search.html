@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Buscar libros{% endblock title %}
+{% block content %}
+
+<!-- Formulario para buscar por palabra en título o autor -->
+<section class="page-section searcher about-heading">
+  <dic class="container">
+    <div class="about-heading-content">
+      <div class="row me-0">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded bg-book-list p-5 rounded">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-upper">Buscar</span>
+            <span class="section-heading-lower">Libros</span>
+          </h2>
+          <h3 class="section-heading">Título o Autor</h3>
+          <p class="mb-0">
+            <form action="{% url 'book_search' %}" method="GET">
+              <table>
+                {{searcher.as_table}}
+              </table>
+
+              <div class="text-center">
+                <input type="submit" class="btn btn-primary btn-block py-2" value="BUSCAR">
+                <a class="btn btn-primary btn-block py-2" href="{% url 'book_list' %}">
+                  VOLVER
+                </a>
+              </div>
+            </form>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Visualización de resultados de búsqueda -->
+<section class="page-section results cta">
+  <div class="container">
+    <div class="row me-0">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner bg-faded bg-book-list text-center rounded">
+          <h2 class="section-heading mb-5">
+            <span class="section-heading-upper">Resultados de la búsqueda:</span>
+          </h2>
+          <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
+            {% if books %}
+            {% for book in books %}
+            <li class="list-unstyled-item list-hours-item d-flex">
+              {{book.title}}   
+              <span class="ms-auto" style="font-weight: normal"><em>|  Autor: {{book.author}}</em></span>
+            </li>
+            {% endfor %}
+            {% else %}
+            <li class="list-unstyled-item list-hours-item d-flex">
+              No se encontraron libros para esa búsqueda.
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
+        
