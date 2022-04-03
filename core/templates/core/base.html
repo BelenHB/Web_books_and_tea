@@ -7,6 +7,10 @@
     <meta name="author" content="" />
     <title>Books & Tea | {% block title %}{% endblock %}</title>
     {% load static %}
+    <!-- Para el CKEditor-->
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <!-- Ubicación del favicon-->
     <link rel="icon" type="image/x-icon" href="{% static 'core/assets/favicon.ico' %}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -36,10 +40,10 @@
               <a class="nav-link text-uppercase" href="{% url 'book_list' %}">Libros</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase" href="#">Recetas</a>
+              <a class="nav-link text-uppercase" href="">Recetas</a>
             </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase" href="">Blog</a>
+            <li class="nav-item px-lg-4 {% if request.path == '/pages/' %}active{% endif %}">
+              <a class="nav-link text-uppercase" href="{% url 'pages' %}">Blog</a>
             </li>
             <li class="nav-item px-lg-4 {% if request.path == '/about/' %}active{% endif %}">
               <a class="nav-link text-uppercase"  href="{% url 'about' %}">Acerca de</a>

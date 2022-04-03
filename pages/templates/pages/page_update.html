@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Nueva página{% endblock title %}
+{% block content %}
+<section class="page-section books about-heading">
+  <dic class="container">
+    <div class="about-heading-content">
+      <div class="row me-0">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded p-5 rounded" style="background-color:#f6e1c58c;">
+          
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-upper">Formulario de carga</span>
+            <span class="section-heading-lower">Blog</span>
+          </h2>
+          {% if form.errors %}
+          <p>Datos incorrectos, por favor revisar.</p>
+          {% endif %}
+          
+          <form action="" method="POST">{% csrf_token %}
+            
+            <table>
+              {{form.as_p}}
+            </table>
+            <input type="submit" value="ACTUALIZAR">
+            <a href="{% url 'pages' %}">VOLVER</a>
+           
+          </form>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        
+{% endblock content %}

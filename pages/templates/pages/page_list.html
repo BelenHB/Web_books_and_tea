@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Blog{% endblock title %}
+{% block content %}
+
+
+<!-- Listado de publicaciones del blog de la base de datos -->
+<section class="page-section results cta">
+  <div class="container">
+    <div class="row me-0">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner bg-faded text-center rounded">
+          <h2 class="section-heading mb-5">
+            <span class="section-heading-upper">Blog</span>
+          </h2>
+          <div class="list-unstyled list-hours mb-5 text-left mx-auto">
+
+            <table>
+              {% for page in object_list %}
+              <tr>
+                <td class="list-unstyled-item list-hours-item d-flex">{{post.title}}</td>
+                <td><span class="ms-auto" style="font-weight: normal"><em>{{post.subtitle}}</em></td>
+                <td>
+                  <a class="btn btn-primary btn-sm" href="{% url 'page_detail' post.id %}">
+                    Leer más
+                  </a>
+                </td>
+                <td>
+                  <a class="btn btn-primary btn-sm" href="{% url 'page_update' post.id %}">
+                    Editar
+                  </a>
+                </td> 
+                <td>
+                  <a class="btn btn-primary btn-sm" href="{% url 'page_delete' post.id %}">
+                    Borrar
+                  </a>
+                </td>  
+              </tr>
+              {% endfor %}
+            </table>
+            
+          </div>
+          <div class="intro-button mx-auto">
+            <a class="btn btn-primary btn-md" href="{% url 'page_create' %}">
+              Crear nuevo post
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
