@@ -17,7 +17,7 @@
           <p>Datos incorrectos, por favor revisar.</p>
           {% endif %}
           
-          <form action="" method="POST">{% csrf_token %}
+          <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
             
             <table>
               {{form.as_p}}

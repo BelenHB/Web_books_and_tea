@@ -48,6 +48,23 @@
             <li class="nav-item px-lg-4 {% if request.path == '/about/' %}active{% endif %}">
               <a class="nav-link text-uppercase"  href="{% url 'about' %}">Acerca de</a>
             </li>
+            {% if not request.user.is_authenticated %}
+            <li class="nav-item px-lg-4 {% if request.path == '/login/' %}active{% endif %}">
+              <a class="nav-link text-uppercase"  href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase"  href="{% url 'signup' %}">Signup</a>
+            </li>
+            {% else %}
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase"  href="{% url 'edit_user' %}">
+                <img src="{{ img_avatar }}" alt="Editar perfil" height="40px">
+              </a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase"  href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>

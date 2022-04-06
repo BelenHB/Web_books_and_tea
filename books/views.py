@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 
 from .forms import BookForm, BookSearchForm
 from .models import Book
+from accounts.views import show_avatar
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -11,10 +14,11 @@ from .models import Book
 def book_list(request):
   books = Book.objects.all()
   
-  return render(request, 'books/book_list.html', {'books':books})
+  return render(request, 'books/book_list.html', {'books':books, 'img_avatar':show_avatar(request.user)})
 
 
 # Vista CREACIÓN DE NUEVO LIBRO
+@login_required
 def book_create(request):
   '''Permite ingresar objetos de clase Book (Libro) en la BD.
   Solicita título, autor y ISBN de la publicación'''
@@ -31,10 +35,12 @@ def book_create(request):
   else:
     form = BookForm()
   
-  return render(request, 'books/book_create.html', {'form':form})
+  return render(request, 'books/book_create.html', {'form':form,
+                                                    'img_avatar':show_avatar(request.user)})
 
 
 # Vista EDITAR LIBRO
+@login_required
 def book_update(request, id):
   '''Permite modificar objetos de clase Book (Libro) en la BD.
   Solicita título, autor y ISBN de la publicación'''
@@ -56,10 +62,13 @@ def book_update(request, id):
                              'author': book.author,
                              'isbn': book.isbn})
     
-  return render(request, 'books/book_update.html', {'form':form, 'book':book})
+  return render(request, 'books/book_update.html', {'form':form,
+                                                    'book':book,
+                                                    'img_avatar':show_avatar(request.user)})
 
 
 # Vista BORRAR LIBRO
+@login_required
 def book_delete(request, id):
   '''Permite eliminar objetos de clase Book (Libro) en la BD.'''
   book = Book.objects.get(id=id)
@@ -80,7 +89,9 @@ def book_search(request):
     books = Book.objects.filter(title__icontains=data)| Book.objects.filter(author__icontains=data)
   searcher = BookSearchForm()
 
-  return render(request, 'books/book_search.html', {'searcher':searcher, 'books':books})
+  return render(request, 'books/book_search.html', {'searcher':searcher,
+                                                    'books':books,
+                                                    'img_avatar':show_avatar(request.user)})
  
  
 

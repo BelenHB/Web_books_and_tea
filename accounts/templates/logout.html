@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Logout{% endblock title %}
+{% block content %}
+
+<h2>Te has deslogueado!</h2>
+
+<div class="intro-button mx-auto">
+  <a class="btn btn-primary btn-md" href="{% url 'home' %}">Inicio</a>
+</div>
+<div class="intro-button mx-auto">
+  <a class="btn btn-primary btn-md" href="{% url 'login' %}">volver a ingresar</a>
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %}

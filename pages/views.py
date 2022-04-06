@@ -6,6 +6,8 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
 # Vista listado de BLOG (pages):
@@ -21,18 +23,18 @@ class PageDetail(DetailView):
   model = Page
   template_name = 'pages/page_detail.html'
   
-class PageCreate(CreateView):
+class PageCreate(LoginRequiredMixin, CreateView):
   model = Page
   fields = ['title', 'subtitle', 'content', 'author', 'created', 'image']
   success_url = '/pages/'
   
-class PageUpdate(UpdateView):
+class PageUpdate(LoginRequiredMixin, UpdateView):
   model = Page
   fields = ['title', 'subtitle', 'content', 'author', 'created', 'image']
   template_name = 'pages/page_update.html'
   success_url = '/pages/'
   
-class PageDelete(DeleteView):
+class PageDelete(LoginRequiredMixin, DeleteView):
   model = Page
   success_url = '/pages/'
   

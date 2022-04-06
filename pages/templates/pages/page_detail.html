@@ -18,6 +18,9 @@
           <h4>{{page.subtitle}}</h4>
           <p>{{page.content|safe}}</p>
           <br><br>
+          {% if page.image %}
+            <img src="{{page.image.url}}" alt="">
+          {% endif %}
           <p>{{page.author}}</p>
           <p>{{page.created}}</p>
 

@@ -15,29 +15,53 @@
           </h2>
           <div class="list-unstyled list-hours mb-5 text-left mx-auto">
 
-            <table>
+            <ul>
+            {% for page in object_list %}
+              <li>{{page.title}}
+                <p>{{page.subtitle}}</p>
+                {% if page.image %}
+                <img src="{{page.image.url}}" alt="">
+                {% endif %}
+                <p>{{page.content|safe|truncatechars:"50"}}</p>
+                <a class="btn btn-primary btn-sm" href="{% url 'page_detail' page.id %}">
+                  Leer más
+                </a>
+                <a class="btn btn-primary btn-sm" href="{% url 'page_update' page.id %}">
+                  Editar
+                </a>
+                <a class="btn btn-primary btn-sm" href="{% url 'page_delete' page.id %}">
+                  Borrar
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% comment %} <table>
               {% for page in object_list %}
               <tr>
-                <td class="list-unstyled-item list-hours-item d-flex">{{post.title}}</td>
-                <td><span class="ms-auto" style="font-weight: normal"><em>{{post.subtitle}}</em></td>
-                <td>
-                  <a class="btn btn-primary btn-sm" href="{% url 'page_detail' post.id %}">
+                <td class="list-unstyled-item list-hours-item d-flex">{{page.title}}</td>
+                <td><span class="ms-auto" style="font-weight: normal"><em>{{page.subtitle}}</em></td>
+                {% if page.image %}
+                <img src="{{page.image.url}}" alt="">
+                {% endif %}
+                <p>{{page.content|safe|truncatechars:"50"}}
+                  <td>
+                  <a class="btn btn-primary btn-sm" href="{% url 'page_detail' page.id %}">
                     Leer más
                   </a>
                 </td>
                 <td>
-                  <a class="btn btn-primary btn-sm" href="{% url 'page_update' post.id %}">
+                  <a class="btn btn-primary btn-sm" href="{% url 'page_update' page.id %}">
                     Editar
                   </a>
                 </td> 
                 <td>
-                  <a class="btn btn-primary btn-sm" href="{% url 'page_delete' post.id %}">
+                  <a class="btn btn-primary btn-sm" href="{% url 'page_delete' page.id %}">
                     Borrar
                   </a>
                 </td>  
               </tr>
               {% endfor %}
-            </table>
+            </table> {% endcomment %}
             
           </div>
           <div class="intro-button mx-auto">
