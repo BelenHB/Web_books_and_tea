@@ -57,14 +57,20 @@
             </li>
             {% else %}
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase"  href="{% url 'edit_user' %}">
-                <img src="{{ img_avatar }}" alt="Editar perfil" height="40px">
-              </a>
+              <a class="nav-link text-uppercase"  href="{% url 'edit_profile' %}">Editar Perfil</a>
             </li>
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase"  href="{% url 'logout' %}">Logout</a>
             </li>
+              {% if img_avatar %}
+              <img src="{{img_avatar}}" alt="" widht="40px" height="40px" class="rounded-circle">
+              {% else %}
+              <img src="{% static 'core/assets/img/no-avatar.jpg' %}" alt="" widht="40px" height="40px" class="rounded-circle">
+              {% endif %}
+
             {% endif %}
+
+            
           </ul>
         </div>
       </div>

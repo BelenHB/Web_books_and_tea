@@ -3,9 +3,4 @@ from .models import Page
 
 # Register your models here.
 
-class PageAdmin(admin.ModelAdmin):
-  readonly_fields = ('created',)
-
-
-
-admin.site.register(Page, PageAdmin)
+admin.site.register(Page)

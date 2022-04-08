@@ -1,5 +1,7 @@
 from dataclasses import field
 from django.shortcuts import render
+
+from pages.forms import PageForm
 from .models import Page
 
 from django.views.generic import ListView
@@ -25,12 +27,14 @@ class PageDetail(DetailView):
   
 class PageCreate(LoginRequiredMixin, CreateView):
   model = Page
-  fields = ['title', 'subtitle', 'content', 'author', 'created', 'image']
+  # fields = ['title', 'subtitle', 'content', 'author', 'image']
+  form_class = PageForm
   success_url = '/pages/'
   
 class PageUpdate(LoginRequiredMixin, UpdateView):
   model = Page
-  fields = ['title', 'subtitle', 'content', 'author', 'created', 'image']
+  # fields = ['title', 'subtitle', 'content', 'author', 'image']
+  form_class = PageForm
   template_name = 'pages/page_update.html'
   success_url = '/pages/'
   

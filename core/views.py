@@ -7,8 +7,9 @@ from accounts.views import show_avatar
 
 # Vista 'home'
 def home(request):
-  return render(request, 'core/home.html', {'img_avatar':show_avatar(request.user)})
+    return render(request, 'core/home.html', {})#'img_avatar':show_avatar(request.user)})
+
   
 
 def about(request):
-  return render(request, 'core/about.html', {'img_avatar':show_avatar(request.user)})
+  return render(request, 'core/about.html', {})#'img_avatar':show_avatar(request.user)})

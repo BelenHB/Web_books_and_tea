@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Editar Perfil de Usuario{% endblock title %}
+{% block content %}
+
+<div class="container">
+  <div class="row me-0">
+    <div class="col-xl-9 mx-auto">
+      <div class="cta-inner bg-faded text-center rounded">
+      <p>{{msg}}</p>
+        <form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <table>
+            {{form.as_table}}
+          </table>
+          <button>Editar Perfil de usuario</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

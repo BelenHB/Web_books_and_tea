@@ -17,15 +17,28 @@ class UserForm(UserCreationForm):
     help_texts = {k:'' for k in fields}
     
 # Formulario propio para editar perfil de usuario
-class UserEditForm(forms.Form):
-  username = forms.CharField(label='Usuario')
+# class UserEditForm(forms.Form):
+#   username = forms.CharField(label='Usuario')
+#   email = forms.EmailField(label='email')
+#   password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput())
+#   password2 = forms.CharField(label='Confirma contraseña', widget=forms.PasswordInput())
+#   first_name = forms.CharField(label='Nombre')
+#   last_name = forms.CharField(label='Apellido', required=False)
+    
+#   class Meta:
+#     model = User
+#     fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name']
+#     help_texts = {k:'' for k in fields}
+    
+class ProfileUserForm(forms.Form):
   email = forms.EmailField(label='email')
-  password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput())
-  password2 = forms.CharField(label='Confirma contraseña', widget=forms.PasswordInput())
+  password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput(),
+                              required=False)
+  password2 = forms.CharField(label='Confirma contraseña', widget=forms.PasswordInput(),
+                              required=False)
   first_name = forms.CharField(label='Nombre')
   last_name = forms.CharField(label='Apellido', required=False)
-    
-  class Meta:
-    model = User
-    fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name']
-    help_texts = {k:'' for k in fields}
+  avatar = forms.ImageField(label='Avatar', required=False)
+  link = forms.URLField(label='Link', required=False)
+  description = forms.CharField(label='Descripción', widget=forms.Textarea())
+  

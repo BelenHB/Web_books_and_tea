@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 def book_list(request):
   books = Book.objects.all()
   
-  return render(request, 'books/book_list.html', {'books':books, 'img_avatar':show_avatar(request.user)})
+  return render(request, 'books/book_list.html', {'books':books})#, 'img_avatar':show_avatar(request.user)})
 
 
 # Vista CREACIÓN DE NUEVO LIBRO
@@ -35,8 +35,8 @@ def book_create(request):
   else:
     form = BookForm()
   
-  return render(request, 'books/book_create.html', {'form':form,
-                                                    'img_avatar':show_avatar(request.user)})
+  return render(request, 'books/book_create.html', {'form':form})#,
+                                                    # 'img_avatar':show_avatar(request.user)})
 
 
 # Vista EDITAR LIBRO
@@ -63,8 +63,8 @@ def book_update(request, id):
                              'isbn': book.isbn})
     
   return render(request, 'books/book_update.html', {'form':form,
-                                                    'book':book,
-                                                    'img_avatar':show_avatar(request.user)})
+                                                    'book':book})#,
+                                                    # 'img_avatar':show_avatar(request.user)})
 
 
 # Vista BORRAR LIBRO
@@ -90,8 +90,8 @@ def book_search(request):
   searcher = BookSearchForm()
 
   return render(request, 'books/book_search.html', {'searcher':searcher,
-                                                    'books':books,
-                                                    'img_avatar':show_avatar(request.user)})
+                                                    'books':books})#,
+                                                    # 'img_avatar':show_avatar(request.user)})
  
  
 

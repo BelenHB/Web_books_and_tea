@@ -1,28 +1,25 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Posteos{% endblock title %}
+{% block title %}Borrar post{% endblock title %}
 {% block content %}
 <section class="page-section books about-heading">
   <dic class="container">
     <div class="about-heading-content">
       <div class="row me-0">
         <div class="col-xl-9 col-lg-10 mx-auto">
-          <div class="bg-faded p-5 rounded" style="background-color:#f6e1c58c;">
-          
-          
-          
-          <form action="" method="POST">{% csrf_token %}
-          ¿Confirmas el borrado de este elemento? {{page.title}} 
-           
-            <input type="submit" value="BORRAR">
-           
-          </form>
-          <div class="intro-button mx-auto">
-            <a class="btn btn-primary btn-md" href="{% url 'pages' %}">
-              Volver
-            </a>
-          </div>
-          
+          <div class="bg-faded p-5 rounded" style="background-color:#e5dacccc;">
+
+            <form action="" method="POST">{% csrf_token %}
+            ¿Confirmas el borrado de este elemento? 
+              <p><span class="section-heading-blog">{{page.title}}</span></p>
+              <input type="submit" class="btn btn-primary btn-md" value="BORRAR">
+              <div class="container bg-faded text-center" style="background-color:transparent">
+                <a class="btn btn-primary btn-md" href="{% url 'pages' %}">
+                  Volver
+                </a>
+              </div>
+            </form>
+
         </div>
       </div>
     </div>
