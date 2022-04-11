@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Perfil de usuario{% endblock title %}
+{% block content %}
+
+  <dic class="container">
+    <div class="about-heading-content">
+      <div class="row me-0">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded p-5 rounded" style="background-color:#e5dacccc;">
+
+          <h3 class="section-heading mb-4">{{request.user.username}}</h3>
+          <hr>
+          <h4>{{request.user.first_name}}
+          {% if request.user.last_name %}
+            {{request.user.last_name}}</h4>
+          {% endif %}
+          {% if request.user.profile.avatar %}
+            <div class="text-center">
+              <img src="{{request.user.profile.avatar.url}}" alt="" width="300px" heigth="300px">
+            </div>
+          {% endif %}
+          <p>{{request.user.profile.description}}</p>
+          <br><br>
+          <p>{{request.user.profile.link}}</p>
+          
+          
+          <div class="intro-button mx-auto text-center">
+            <a class="btn btn-primary btn-md" href="{% url 'edit_profile' %}">
+              Editar usuario
+            </a>
+            <a class="btn btn-primary btn-md" href="{% url 'home' %}">
+              Volver
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

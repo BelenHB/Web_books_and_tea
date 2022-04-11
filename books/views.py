@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from .forms import BookForm, BookSearchForm
 from .models import Book
-from accounts.views import show_avatar
+# from accounts.views import show_avatar
 
 from django.contrib.auth.decorators import login_required
 

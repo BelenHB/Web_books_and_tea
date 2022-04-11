@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # para mostrar el avatar
-from accounts.views import show_avatar
+# from accounts.views import show_avatar
 
 # Create your views here.
 

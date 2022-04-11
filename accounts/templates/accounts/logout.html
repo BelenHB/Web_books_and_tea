@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Logout{% endblock title %}
+{% block content %}
+
+<section class="page-section books about-heading">
+  <dic class="container">
+    <div class="about-heading-content">
+      <div class="row me-0">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded p-5 rounded" style="background-color:#e5dacccc;">
+            
+            <h2>Te has deslogueado!</h2>
+                       
+            <div class="container bg-faded text-center" style="background-color:transparent">
+              <a class="btn btn-primary btn-md" href="{% url 'home' %}">Ir a Inicio</a>
+              <a class="btn btn-primary btn-md" href="{% url 'login' %}">Volver a Login</a>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+{% endblock content %}

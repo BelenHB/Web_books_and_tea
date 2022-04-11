@@ -1,6 +1,4 @@
-from distutils.command.upload import upload
 from django.db import models
-
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -12,7 +10,7 @@ from django.contrib.auth.models import User
   
 class Profile(models.Model):
   avatar = models.ImageField(upload_to='profiles', null=True, blank=True)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
   link = models.URLField(null=True)
   description = models.CharField(max_length=200)
 

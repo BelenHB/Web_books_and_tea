@@ -40,5 +40,5 @@ class ProfileUserForm(forms.Form):
   last_name = forms.CharField(label='Apellido', required=False)
   avatar = forms.ImageField(label='Avatar', required=False)
   link = forms.URLField(label='Link', required=False)
-  description = forms.CharField(label='Descripción', widget=forms.Textarea())
+  description = forms.CharField(label='Descripción', widget=forms.Textarea(), required=False)
   

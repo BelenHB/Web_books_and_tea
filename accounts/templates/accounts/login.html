@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+
+<section class="page-section books about-heading">
+  <dic class="container">
+    <div class="about-heading-content">
+      <div class="row me-0">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded p-5 rounded" style="background-color:#e5dacccc;">
+
+            <form action="{% url 'login' %}" method="post">
+              {% csrf_token %}
+              <table>
+                {{form.as_table}}
+              </table>
+            
+              <input type="submit" class="btn btn-primary btn-md" value="LOGIN">
+              <div class="container bg-faded text-center" style="background-color:transparent">
+                <a class="btn btn-primary btn-md" href="{% url 'home' %}">
+                  Volver
+                </a>
+              </div>
+            </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+{% endblock content %}

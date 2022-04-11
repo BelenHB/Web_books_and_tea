@@ -10,18 +10,19 @@
       <div class="intro-text left-0 text-center bg-faded p-5 rounded">
         <h2 class="section-heading mb-4">
           <span class="section-heading-upper">Esperamos que disfruten</span>
-          {% comment %} {% if request.user.is_authenticated %}
-          <span class="section-heading-lower">Bienvenido {{user.username}}</span> {% endcomment %}
-          <p>
-            {% comment %} <img src="{{url}}" alt="" width="30px" height="40px"> {% endcomment %}
-          </p>
-          {% comment %} {% else %} {% endcomment %}
+          
+          {% if request.user.is_authenticated %}
+          <span class="section-heading-lower">Bienvenido, {{user.username}}</span>
+          {% else %}
           <span class="section-heading-lower">Bienvenidos</span>
-          {% comment %} {% endif %} {% endcomment %}
+          {% endif %}
+        
         </h2>
         <p class="mb-3">Este es un espacio de encuentro para quienes disfrutamos
            de un buen libro y algo rico para comer. ¡Súmate!</p>
+        {% if not request.user.is_authenticated %}
         <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="{% url 'signup' %}">Regístrate!</a></div>
+        {% endif %}
       </div>
     </div>
   </div>
