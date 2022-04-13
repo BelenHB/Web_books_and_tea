@@ -19,6 +19,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class PageList(ListView):
   model = Page
   template_name = 'pages/page_list.html'
+  ordering = ['-created']
   
 class PageDetail(DetailView):
   model = Page

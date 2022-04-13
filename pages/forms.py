@@ -1,4 +1,3 @@
-import re
 from django import forms
 from .models import Page
 # from ckeditor.fields import RichTextFormField
@@ -24,7 +23,6 @@ class PageForm(forms.ModelForm):
       'title': forms.TextInput(attrs={'class':'form-control'}),
       'subtitle': forms.TextInput(attrs={'class':'form-control'}),
       'content': CKEditorWidget(),
-      'author': forms.TextInput(attrs={'class':'form-control'}),
     }
       
     

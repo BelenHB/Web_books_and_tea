@@ -36,8 +36,8 @@
             <li class="nav-item px-lg-4 {% if request.path == '/books/' %}active{% endif %}">
               <a class="nav-link text-uppercase" href="{% url 'book_list' %}">Libros</a>
             </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase" href="">Recetas</a>
+            <li class="nav-item px-lg-4 {% if request.path == '/recipes/' %}active{% endif %}">
+              <a class="nav-link text-uppercase" href="{% url 'recipes' %}">Recetas</a>
             </li>
             <li class="nav-item px-lg-4 {% if request.path == '/pages/' %}active{% endif %}">
               <a class="nav-link text-uppercase" href="{% url 'pages' %}">Blog</a>
@@ -52,15 +52,15 @@
           </ul>
           <ul class="navbar-nav justify-content-end">
             {% if not request.user.is_authenticated %}
-            <li class="nav-item px-lg-4 {% if request.path == '/login/' %}active{% endif %}">
+            <li class="nav-item px-lg-4 {% if request.path == '/accounts/login/' %}active{% endif %}">
               <a class="nav-link text-uppercase"  href="{% url 'login' %}">Ingresar</a>
             </li>
-            <li class="nav-item px-lg-4">
+            <li class="nav-item px-lg-4 {% if request.path == '/accounts/signup/' %}active{% endif %}">
               <a class="nav-link text-uppercase"  href="{% url 'signup' %}">Registrarse</a>
             </li>
             {% else %}
             <li>
-              <a class="nav-link text-uppercase"  href="{% url 'user_profile' %}">
+              <a class="nav-link text-uppercase"  href="{% url 'profile' %}">
                 {% if request.user.profile.avatar  %}
                 <img src="{{request.user.profile.avatar.url}}" alt="" widht="40px" height="40px" class="rounded-circle">
                 

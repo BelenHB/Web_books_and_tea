@@ -13,5 +13,8 @@ class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   link = models.URLField(null=True)
   description = models.CharField(max_length=200)
+  
+  def __str__(self):
+    return self.user.username
 
   

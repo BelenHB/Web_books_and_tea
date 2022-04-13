@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Editar página{% endblock title %}
+{% block title %}Editar receta{% endblock title %}
 {% block content %}
 <section class="page-section books about-heading">
   <dic class="container">
@@ -11,7 +11,7 @@
           
           <h2 class="section-heading mb-4">
             <span class="section-heading-upper">Formulario de edición</span>
-            <span class="section-heading-lower">Blog</span>
+            <span class="section-heading-lower">Recetas</span>
           </h2>
           {% if form.errors %}
           <p>Datos incorrectos, por favor revisar.</p>
@@ -20,18 +20,18 @@
           <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 
             <div class="form-group">
-              <label for="title">Título</label>
-              <div class="input-group">{{form.title}}</div>  
+              <label for="recipe_title">Título</label>
+              <div class="input-group">{{form.recipe_title}}</div>  
             </div>
 
             <div class="form-group">
-              <label for="subtitle">Subtítulo</label>
-              <div class="input-group">{{form.subtitle}}</div>  
+              <label for="ingredients">Ingredientes</label>
+              <div class="input-group">{{form.ingredients}}</div>  
             </div>
 
             <div class="form-group">
-              <label for="content">Contenido</label>
-              <div class="input-group">{{form.content}}</div>  
+              <label for="preparation">Preparación</label>
+              <div class="input-group">{{form.preparation}}</div>  
             </div>
 
             <div class="form-group">
@@ -40,13 +40,13 @@
             </div>
 
             <div class="form-group">
-              <label for="image">Imagen</label>
-              <div class="input-group btn">{{form.image}}</div>  
+              <label for="picture">Foto</label>
+              <div class="input-group btn">{{form.picture}}</div>  
             </div>
             <br>
             <div class="text-center">
               <input type="submit" class="btn btn-primary btn-md" value="ACTUALIZAR">
-              <a class="btn btn-primary btn-md" href="{% url 'pages' %}">VOLVER</a>
+              <a class="btn btn-primary btn-md" href="{% url 'recipes' %}">VOLVER</a>
             </div>
           
           </form>

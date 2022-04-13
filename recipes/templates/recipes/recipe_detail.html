@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Receta{% endblock title %}
+{% block content %}
+
+  <dic class="container">
+    <div class="about-heading-content">
+      <div class="row me-0">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded p-5 rounded" style="background-color:#e5dacccc;">
+
+          <h3 class="section-heading mb-4">{{recipe.recipe_title}}</h3>
+          <hr>
+          <p>{{recipe.ingredients|safe}}</p>
+          {% if recipe.picture %}
+          <div class="text-center">
+            <img src="{{recipe.picture.url}}" alt="" width="500px" heigth="500px">
+          </div>
+          {% endif %}
+          <br>
+          <p>{{recipe.preparation|safe}}</p>
+          <br>
+          <p>Realizada por <b><em>{{recipe.author}}</b></em></p>
+
+          <div class="intro-button mx-auto text-center">
+            <a class="btn btn-primary btn-md" href="{% url 'recipes' %}">
+              Volver
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

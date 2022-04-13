@@ -109,5 +109,5 @@ def edit_profile_user(request):
 
 @login_required
 def user_profile(request):
-  return render(request, 'accounts/user_profile.html', {})
+  return render(request, 'accounts/profile.html', {})
 
