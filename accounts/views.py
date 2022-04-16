@@ -9,7 +9,7 @@ from .models import Profile
 
 # Create your views here.
 
-# Vista LOGIN
+# Vista INGRESAR
 def user_login(request):
   
   if request.method == 'POST':
@@ -22,10 +22,9 @@ def user_login(request):
       user = authenticate(username=username, password=password)
       
       if user is not None:
-        msg = 'Bienvenido usuario registrado'
         login(request, user)
         return redirect('home')
-        # return render(request, 'core/home.html', {'msg':msg})
+
       else:
         msg = 'Usuario o contraseña no válido'
         return render(request, 'accounts/login.html', {'form':form, 'msg':msg})
@@ -44,45 +43,51 @@ def signup(request):
 
   if request.method == 'POST':
     form = UserForm(request.POST) #se usa un formulario personalizado por nosotros
+    
     if form.is_valid():
       username = form.cleaned_data['username']
       form.save()
-      
       return redirect('login')
       
     else:
-      print('entra al else')
       return render(request, 'accounts/signup.html', {'form':form, 'msg':'Formulario no válido'})
-      # print('form no valido, entra al else')
-      # return render(request, 'registration/register.html', {'form':form})
-          
+         
   form = UserForm()
-  print('va por afuera')
   return render(request, 'accounts/signup.html', {'form':form})
 
 
-
-
-
+# Vista EDITAR PERFIL (se accede clickeando sobre el avatar de usuario y luego
+# el botón de 'Editar perfil')
 @login_required
 def edit_profile_user(request):
+  
   logged_user, _ = Profile.objects.get_or_create(user=request.user)
+  
   if request.method == 'POST':
     form = ProfileUserForm(request.POST, request.FILES)
     
     if form.is_valid():
-      request.user.email = form.cleaned_data['email']
-      request.user.first_name = form.cleaned_data['first_name']
-      request.user.last_name = form.cleaned_data['last_name']
-      if form.cleaned_data['avatar']:
-        logged_user.avatar = form.cleaned_data['avatar']
-      else:
-        print(logged_user.avatar)
-      logged_user.link = form.cleaned_data['link']
-      logged_user.description = form.cleaned_data['description']
+      data = form.cleaned_data
+
+      request.user.email = data.get('email',)
+      request.user.first_name = data.get('first_name')
+      request.user.last_name = data.get('last_name', '')      
       
-      if form.cleaned_data['password1'] != '' and form.cleaned_data['password1'] == form.cleaned_data['password2']:
-        request.user.set_password(form.cleaned_data['password1'])
+      # recuperar la imagen de avatar si hubiera
+      avatar = data.get('avatar', '')
+
+      if avatar is not None:        
+        if avatar is False:
+          logged_user.avatar = None          
+        else:
+          logged_user.avatar = data.get('avatar')
+          
+      logged_user.link = data.get('link', '')
+      logged_user.description = data.get('description','')
+      
+      # comprobar si se modifica la contraseña, y si es así, cambiarla
+      if data.get('password1') != '' and data.get('password1') == data.get('password2'):
+        request.user.set_password(data.get('password1'))
       
       request.user.save()
       logged_user.save()
@@ -90,7 +95,7 @@ def edit_profile_user(request):
       return redirect('home')
     
     else:
-      return render(request, 'accounts/signup.html', {'form':form})
+      return render(request, 'accounts/edit_profile.html', {'form':form})
   
   form = ProfileUserForm(initial= 
                          {
@@ -107,7 +112,14 @@ def edit_profile_user(request):
   return render(request, 'accounts/edit_profile.html', {'form':form})
 
 
+# Vista de PERFIL DE USUARIO
 @login_required
 def user_profile(request):
   return render(request, 'accounts/profile.html', {})
 
+
+# Vista de USUARIOS (listado de perfiles registrados)
+def profiles_list(request):
+  profiles = Profile.objects.all()
+  print(profiles)
+  return render(request, 'accounts/profiles_list.html', {'profiles':profiles})

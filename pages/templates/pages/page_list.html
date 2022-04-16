@@ -9,40 +9,43 @@
   <div class="container">
     <div class="row me-0">
       <div class="col-xl-9 mx-auto">
+       
         {% for page in object_list %}
-        <div class="cta-inner-blog bg-faded bg-blog text-left rounded">
-          <p><span class="section-heading-blog">{{page.title}}</span></p>
-          <hr>  
-          <p><em><b>{{page.subtitle}}</b></em></p>
-          {% if page.image %}
-          <div class="text-center">
-            <img src="{{page.image.url}}" alt="" width="300px" heigth="300px">
+          <div class="cta-inner-blog bg-faded bg-blog text-left rounded">
+            <p><span class="section-heading-blog">{{page.title}}</span></p>
+            <hr>  
+            <p><em><b>{{page.subtitle}}</b></em></p>
+            {% if page.image %}
+              <div class="text-center">
+                <img src="{{page.image.url}}" alt="" width="300px" heigth="300px">
+              </div>
+            {% endif %}
+            <p>{{page.content|safe|truncatechars:"150"}}</p>
+            <hr>
+            <p>Escrito por <em><b>{{page.author}}</b></em></p>
+            <p>{{page.created|date:'SHORT_DATE_FORMAT'}}</p> 
+              
+            <div class="container text-center">
+              <a class="btn btn-primary btn-sm" href="{% url 'page_detail' page.id %}">
+                Leer más
+              </a>
+              <a class="btn btn-primary btn-sm" href="{% url 'page_update' page.id %}">
+                Editar
+              </a>
+              <a class="btn btn-primary btn-sm" href="{% url 'page_delete' page.id %}">
+                Borrar
+              </a>
+            </div>
           </div>
-          {% endif %}
-          <p>{{page.content|safe|truncatechars:"150"}}</p>
-          <hr>
-          <p>Escrito por <em><b>{{page.author}}</b></em></p>
-          <p>{{page.created|date:'SHORT_DATE_FORMAT'}}</p> 
-            
-          <div class="container text-center">
-            <a class="btn btn-primary btn-sm" href="{% url 'page_detail' page.id %}">
-              Leer más
-            </a>
-            <a class="btn btn-primary btn-sm" href="{% url 'page_update' page.id %}">
-              Editar
-            </a>
-            <a class="btn btn-primary btn-sm" href="{% url 'page_delete' page.id %}">
-              Borrar
-            </a>
-          </div>
-        </div>
         {% endfor %}
+
         <br>
         <div class="container bg-faded text-center" style="background-color:transparent">
           <a class="btn btn-primary btn-md" href="{% url 'page_create' %}">
             Crear nuevo post
           </a>
         </div>
+        
       </div>
     </div>
   </div>

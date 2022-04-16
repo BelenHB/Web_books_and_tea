@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Blog{% endblock title %}
+{% block title %}Recetas{% endblock title %}
 {% block content %}
 
 <section class="page-section books about-heading">
@@ -25,33 +25,35 @@
   <div class="container">
     <div class="row me-0">
       <div class="col-xl-9 mx-auto">
+        
         {% for recipe in object_list %}
-        <div class="cta-inner-blog bg-faded bg-blog text-left rounded">
-          <p><span class="section-heading-blog">{{recipe.recipe_title}}</span></p>
-          <hr> 
-          <p>{{recipe.ingredients|safe|truncatechars:"100"}}</p>
-          {% if recipe.picture %}
-          <div class="text-center">
-            <img src="{{recipe.picture.url}}" alt="" width="250px" heigth="250px">
+          <div class="cta-inner-blog bg-faded bg-blog text-left rounded">
+            <p><span class="section-heading-blog">{{recipe.recipe_title}}</span></p>
+            <hr> 
+            <p>{{recipe.ingredients|safe|truncatechars:"100"}}</p>
+            {% if recipe.picture %}
+              <div class="text-center">
+                <img src="{{recipe.picture.url}}" alt="" width="250px" heigth="250px">
+              </div>
+            {% endif %}
+            <p>{{recipe.preparation|safe|truncatechars:"150"}}</p>
+            <hr>
+            <p>Realizado por <em><b>{{recipe.author}}</b></em></p> 
+              
+            <div class="container text-center">
+              <a class="btn btn-primary btn-sm" href="{% url 'recipe_detail' recipe.id %}">
+                Leer más
+              </a>
+              <a class="btn btn-primary btn-sm" href="{% url 'recipe_update' recipe.id %}">
+                Editar
+              </a>
+              <a class="btn btn-primary btn-sm" href="{% url 'recipe_delete' recipe.id %}">
+                Borrar
+              </a>
+            </div>
           </div>
-          {% endif %}
-          <p>{{recipe.preparation|safe|truncatechars:"150"}}</p>
-          <hr>
-          <p>Realizado por <em><b>{{recipe.author}}</b></em></p> 
-            
-          <div class="container text-center">
-            <a class="btn btn-primary btn-sm" href="{% url 'recipe_detail' recipe.id %}">
-              Leer más
-            </a>
-            <a class="btn btn-primary btn-sm" href="{% url 'recipe_update' recipe.id %}">
-              Editar
-            </a>
-            <a class="btn btn-primary btn-sm" href="{% url 'recipe_delete' recipe.id %}">
-              Borrar
-            </a>
-          </div>
-        </div>
         {% endfor %}
+        
         <br>
         <div class="container bg-faded text-center" style="background-color:transparent">
           <a class="btn btn-primary btn-md" href="{% url 'recipe_create' %}">

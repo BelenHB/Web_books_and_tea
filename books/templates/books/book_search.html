@@ -47,16 +47,16 @@
           </h2>
           <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
             {% if books %}
-            {% for book in books %}
-            <li class="list-unstyled-item list-hours-item d-flex">
-              {{book.title}}   
-              <span class="ms-auto" style="font-weight: normal"><em>|  Autor: {{book.author}}</em></span>
-            </li>
-            {% endfor %}
+              {% for book in books %}
+                <li class="list-unstyled-item list-hours-item d-flex">
+                {{book.title}}   
+                  <span class="ms-auto" style="font-weight: normal"><em>|  Autor: {{book.author}}</em></span>
+                </li>
+              {% endfor %}
             {% else %}
-            <li class="list-unstyled-item list-hours-item d-flex">
-              No se encontraron libros para esa búsqueda.
-            </li>
+              <li class="list-unstyled-item list-hours-item d-flex">
+                No se encontraron libros para esa búsqueda.
+              </li>
             {% endif %}
           </ul>
         </div>

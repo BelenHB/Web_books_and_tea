@@ -107,3 +107,5 @@ El de BORRAR nos redirecciona a una página que nos pide confirmar el borrado de
 ## ACERCA DE
 En esta sección podemos ver una imagen relacionada a la temática y un breve descripción del autor del proyecto.
 
+## USUARIOS
+Nos permite ver el listado de usuarios registrados para, en un futuro, hacer una aplicación de mensajería.

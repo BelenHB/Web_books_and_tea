@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Listado de usuarios{% endblock title %}
+{% block content %}
+
+<section class="page-section clearfix">
+
+  {% for profile in profiles %}
+
+    <dic class="container">
+      <div class="about-heading-content">
+        <div class="row me-0">
+          <div class="col-xl-9 col-lg-10 mx-auto" style="width: 60%;">
+            <div class="bg-faded p-5 rounded" style="background-color:#e5dacccc;">
+            
+              <h3 class="mb-2">{{profile.user}}</h3>
+              <hr>
+            
+              <div class="text-center" sytle="display: inline-block">
+                {% if profile.avatar %}
+                  <img src="{{profile.avatar.url}}" alt="" width="150px" heigth="150px">
+                {% endif %}
+                <p sytle="display: inline-block">{{profile.description}}</p>
+                <p><a href="">{{profile.link}}</a></p>
+              </div>
+       
+            </div>
+          </div>
+        </div>
+      </div>
+
+  {% endfor %}
+
+    <div class="intro-button mx-auto text-center">
+      <a class="btn btn-primary btn-md" href="{% url 'home' %}">
+        Volver
+      </a>
+    </div>
+  
+</section>
+{% endblock content %}

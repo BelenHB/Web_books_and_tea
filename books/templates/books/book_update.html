@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Libros{% endblock title %}
+{% block title %}Actualizar Libro{% endblock title %}
 {% block content %}
 <section class="page-section books about-heading">
   <dic class="container">
@@ -9,38 +9,34 @@
         <div class="col-xl-9 col-lg-10 mx-auto">
           <div class="bg-faded p-5 rounded" style="background-color:#f6e1c58c;">
           
-          <h2 class="section-heading mb-4">
-            <span class="section-heading-upper">Formulario de actualización</span>
-            <span class="section-heading-lower">Libros</span>
-          </h2>
-          {% if form.errors %}
-          <p>Datos incorrectos, por favor revisar.</p>
-          {% endif %}
-          
-          <form action="{% url 'book_update' book.id %}" method="POST">{% csrf_token %}
+            <h2 class="section-heading mb-4">
+              <span class="section-heading-upper">Formulario de actualización</span>
+              <span class="section-heading-lower">Libros</span>
+            </h2>
+            {% if form.errors %}
+              <p>Datos incorrectos, por favor revisar.</p>
+            {% endif %}
             
-            {% comment %} <table>
-              {{form.as_table}}
-            </table>
-            <input type="submit" value="ACTUALIZAR"> {% endcomment %}
+          <form action="{% url 'book_update' book.id %}" method="POST">{% csrf_token %}
+
             <div class="form-group">
               <label for="title">Título</label>
-              <div class="input-group">{{form.title}}
-                {% comment %} <input id="title" type="text" name="{{book.title}}"> {% endcomment %}
+              <div class="input-group">
+                {{form.title}}
               </div>  
             </div>
             
             <div class="form-group">
               <label for="author">Autor</label>
-              <div class="input-group">{{form.author}}
-                {% comment %} <input id="author" type="text" name="{{book.author}}"> {% endcomment %}
+              <div class="input-group">
+                {{form.author}}
               </div>  
             </div>
 
             <div class="form-group">
               <label for="isbn">ISBN</label>
-              <div class="input-group">{{form.isbn}}
-                {% comment %} <input id="isbn" type="text" name="{{book.isbn}}"> {% endcomment %}
+              <div class="input-group">
+                {{form.isbn}}
               </div>  
             </div>
 
@@ -50,10 +46,9 @@
                 VOLVER
               </a>
             </div>
-            
-
 
           </form>
+          
         </div>
       </div>
     </div>

@@ -11,10 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
-# Vista listado de BLOG (pages):
-# def pages(request):
-  
-#   return render(request, 'pages/page_list.html')
+# Creo el CRUD del BLOG con CBV
 
 class PageList(ListView):
   model = Page
@@ -27,13 +24,12 @@ class PageDetail(DetailView):
   
 class PageCreate(LoginRequiredMixin, CreateView):
   model = Page
-  # fields = ['title', 'subtitle', 'content', 'author', 'image']
-  form_class = PageForm
+  # fields = ['title', 'subtitle', 'content', 'author', 'image'] #se reemplaza por el form_class
+  form_class = PageForm #utilizo el formulario directamente
   success_url = '/pages/'
   
 class PageUpdate(LoginRequiredMixin, UpdateView):
   model = Page
-  # fields = ['title', 'subtitle', 'content', 'author', 'image']
   form_class = PageForm
   template_name = 'pages/page_update.html'
   success_url = '/pages/'

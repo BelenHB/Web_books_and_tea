@@ -6,14 +6,15 @@
 <div class="container">
   <div class="row me-0">
     <div class="col-xl-9 mx-auto">
-      <div class="cta-inner bg-faded text-center rounded">
-      <p>{{msg}}</p>
+      <div class="cta-inner bg-faded text-center rounded-form">
+        <h2>Editar perfil de: <em><b>{{user.username}}</b></em></h2>
+        
         <form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <table>
             {{form.as_table}}
           </table>
-          <button>Editar Perfil de usuario</button>
+          <button class="btn btn-primary btn-md">Guardar Perfil</button>
         </form>
 
       </div>

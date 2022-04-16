@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 
 from .forms import BookForm, BookSearchForm
 from .models import Book
-# from accounts.views import show_avatar
 
 from django.contrib.auth.decorators import login_required
 
@@ -14,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 def book_list(request):
   books = Book.objects.all()
   
-  return render(request, 'books/book_list.html', {'books':books})#, 'img_avatar':show_avatar(request.user)})
+  return render(request, 'books/book_list.html', {'books':books})
 
 
 # Vista CREACIÓN DE NUEVO LIBRO
@@ -22,8 +21,10 @@ def book_list(request):
 def book_create(request):
   '''Permite ingresar objetos de clase Book (Libro) en la BD.
   Solicita título, autor y ISBN de la publicación'''
+  
   if request.method == 'POST':
     form = BookForm(request.POST)
+    
     if form.is_valid():
       data = form.cleaned_data
       book = Book(title=data['title'], author=data['author'], isbn=data['isbn'])
@@ -35,8 +36,7 @@ def book_create(request):
   else:
     form = BookForm()
   
-  return render(request, 'books/book_create.html', {'form':form})#,
-                                                    # 'img_avatar':show_avatar(request.user)})
+  return render(request, 'books/book_create.html', {'form':form})
 
 
 # Vista EDITAR LIBRO
@@ -44,6 +44,7 @@ def book_create(request):
 def book_update(request, id):
   '''Permite modificar objetos de clase Book (Libro) en la BD.
   Solicita título, autor y ISBN de la publicación'''
+  
   book = Book.objects.get(id=id)
   
   if request.method == 'POST':
@@ -57,20 +58,20 @@ def book_update(request, id):
       book.save()
       form = BookForm()
       return redirect('book_list')
+  
   else:
     form = BookForm(initial={'title': book.title,
                              'author': book.author,
                              'isbn': book.isbn})
     
-  return render(request, 'books/book_update.html', {'form':form,
-                                                    'book':book})#,
-                                                    # 'img_avatar':show_avatar(request.user)})
+  return render(request, 'books/book_update.html', {'form':form, 'book':book})
 
 
 # Vista BORRAR LIBRO
 @login_required
 def book_delete(request, id):
   '''Permite eliminar objetos de clase Book (Libro) en la BD.'''
+  
   book = Book.objects.get(id=id)
   book.delete()
   
@@ -78,10 +79,11 @@ def book_delete(request, id):
 
 
 # Vista de BUSCAR LIBRO
-# Para buscar libros por palabra
+# Para buscar libros por palabra contenida en título o autor
 def book_search(request):
   '''Realiza una búsqueda en la BD por palabra que se encuentre en el título
   del libro o en el autor'''
+  
   books = []  #aquí se guardarán los resultados de la búsqueda
   data = request.GET.get('find_book', None)
   
@@ -89,9 +91,5 @@ def book_search(request):
     books = Book.objects.filter(title__icontains=data)| Book.objects.filter(author__icontains=data)
   searcher = BookSearchForm()
 
-  return render(request, 'books/book_search.html', {'searcher':searcher,
-                                                    'books':books})#,
-                                                    # 'img_avatar':show_avatar(request.user)})
- 
- 
-
+  return render(request, 'books/book_search.html', {'searcher':searcher, 'books':books})
+  

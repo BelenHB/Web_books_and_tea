@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Libros{% endblock title %}
+{% block title %}Agregar Libro{% endblock title %}
 {% block content %}
 <section class="page-section books about-heading">
   <dic class="container">
@@ -18,29 +18,25 @@
           {% endif %}
           
           <form action="" method="POST">{% csrf_token %}
-            
-            {% comment %} <table>
-              {{form.as_table}}
-            </table>
-            <input type="submit" value="ENVIAR"> {% endcomment %}
+
             <div class="form-group">
               <label for="title">Título</label>
-              <div class="input-group">{{form.title}}
-                {% comment %} <input id="title" type="text" name="{{book.title}}"> {% endcomment %}
+              <div class="input-group">
+                {{form.title}}
               </div>  
             </div>
             
             <div class="form-group">
               <label for="author">Autor</label>
-              <div class="input-group">{{form.author}}
-                {% comment %} <input id="author" type="text" name="{{book.author}}"> {% endcomment %}
+              <div class="input-group">
+                {{form.author}}
               </div>  
             </div>
 
             <div class="form-group">
               <label for="isbn">ISBN</label>
-              <div class="input-group">{{form.isbn}}
-                {% comment %} <input id="isbn" type="text" name="{{book.isbn}}"> {% endcomment %}
+              <div class="input-group">
+                {{form.isbn}}               
               </div>  
             </div>
 
@@ -48,9 +44,9 @@
               <input type="submit" class="btn btn-primary btn-block py-2" value="CREAR">
               <a class="btn btn-primary btn-block py-2" href="{% url 'book_list' %}">
                 VOLVER
-              </a>
-              
+              </a>              
             </div>
+
           </form>
           
         </div>

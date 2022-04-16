@@ -2,22 +2,25 @@
 {% load static %}
 {% block title %}Borrar receta{% endblock title %}
 {% block content %}
-<section class="page-section books about-heading">
+
+<section class="page-section clearfix">
   <dic class="container">
     <div class="about-heading-content">
       <div class="row me-0">
         <div class="col-xl-9 col-lg-10 mx-auto">
           <div class="bg-faded p-5 rounded" style="background-color:#e5dacccc;">
 
-            <form action="" method="POST">{% csrf_token %}
-            ¿Confirmas el borrado de esta receta? 
+            <form action="" method="POST">
+              {% csrf_token %}
+              ¿Confirmas el borrado de esta receta? 
               <p><span class="section-heading-blog">{{recipe.recipe_title}}</span></p>
+              
               <input type="submit" class="btn btn-primary btn-md" value="BORRAR">
               <div class="container bg-faded text-center" style="background-color:transparent">
                 <a class="btn btn-primary btn-md" href="{% url 'recipes' %}">
                   Volver
                 </a>
-              </div>
+              </div>              
             </form>
 
         </div>

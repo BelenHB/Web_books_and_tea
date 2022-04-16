@@ -3,6 +3,7 @@
 {% block title %}Receta{% endblock title %}
 {% block content %}
 
+<section class="page-section clearfix">
   <dic class="container">
     <div class="about-heading-content">
       <div class="row me-0">
@@ -12,11 +13,11 @@
           <h3 class="section-heading mb-4">{{recipe.recipe_title}}</h3>
           <hr>
           <p>{{recipe.ingredients|safe}}</p>
-          {% if recipe.picture %}
-          <div class="text-center">
-            <img src="{{recipe.picture.url}}" alt="" width="500px" heigth="500px">
-          </div>
-          {% endif %}
+            {% if recipe.picture %}
+            <div class="text-center">
+              <img src="{{recipe.picture.url}}" alt="" width="500px" heigth="500px">
+            </div>
+            {% endif %}
           <br>
           <p>{{recipe.preparation|safe}}</p>
           <br>
@@ -32,5 +33,6 @@
       </div>
     </div>
   </div>
-
+</section>
+  
 {% endblock content %}
