@@ -121,5 +121,4 @@ def user_profile(request):
 # Vista de USUARIOS (listado de perfiles registrados)
 def profiles_list(request):
   profiles = Profile.objects.all()
-  print(profiles)
   return render(request, 'accounts/profiles_list.html', {'profiles':profiles})
