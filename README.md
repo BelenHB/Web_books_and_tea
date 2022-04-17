@@ -12,6 +12,11 @@ La idea es que los usuarios puedan registrar sus libros favoritos, junto con
 recetas inspiradas por esa lectura y un blog donde poder compartir su 
 experiencia de cocina o lectura.
 
+## VIDEO DEMO
+El video donde se muestra de modo resumido, un recorrido por el funcionamiento integral de la app.
+
+
+https://drive.google.com/file/d/1iR-q4effSlFv7lFpxGzOc9V4QYPwMNDX/view?usp=sharing
 
 ## INICIO
 En esta página se da la bienvenida de forma genérica y se invita a registrarse.
