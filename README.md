@@ -114,3 +114,10 @@ En esta sección podemos ver una imagen relacionada a la temática y un breve de
 
 ## USUARIOS
 Nos permite ver el listado de usuarios registrados para, en un futuro, hacer una aplicación de mensajería.
+
+### CASOS DE PRUEBA
+En la carpeta docs del proyecto se encuentra un PDF con la documentación de casos de prueba.
+
+<div align="center">
+<img src="docs/Casos_de_prueba.png">
+</div>
